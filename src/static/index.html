@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenWebSignals API Documentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg-1: #0f1720;
+    --bg-2: #111214;
+    --card: #2f3136;
+    --muted: #b9bbbe;
+    --text: #dcddde;
+    --accent: #5865f2;
+    --accent-2: #7c5cff;
+}
+
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Noto Sans',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--text);}
+
+body{
+    background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
+    min-height:100vh;
+    margin:0;
+}
+
+.container{
+    display:flex;
+    max-width:1200px;
+    margin:0 auto;
+    padding:40px 20px;
+    gap:24px;
+}
+
+/* Sidebar navigation */
+nav.sidebar{
+    flex:0 0 220px;
+    position:sticky;
+    top:40px;
+    background: var(--card);
+    border-radius:12px;
+    padding:20px;
+    height:max-content;
+    box-shadow:0 6px 20px rgba(2,6,23,0.5);
+}
+
+nav.sidebar h2{
+    font-size:1.2rem;
+    margin-bottom:12px;
+    color:var(--accent-2);
+}
+
+nav.sidebar ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+nav.sidebar a{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:500;
+}
+
+nav.sidebar a:hover{
+    text-decoration:underline;
+}
+
+main.content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:32px;
+}
+
+header.header{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+header.header .title{
+    font-size:2rem;
+    font-weight:700;
+    color:var(--accent);
+}
+
+header.header .author{
+    font-size:0.9rem;
+    color:var(--muted);
+}
+
+.card{
+    background: var(--card);
+    border-radius:12px;
+    padding:28px 24px;
+    box-shadow:0 6px 20px rgba(2,6,23,0.5);
+    border:1px solid rgba(255,255,255,0.03);
+}
+
+.card h2{
+    font-size:1.4rem;
+    margin-bottom:12px;
+    color:var(--accent-2);
+}
+
+.card p{
+    line-height:1.6;
+    color:var(--text);
+    font-size:0.95rem;
+}
+
+.endpoint-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.endpoint h3{
+    font-size:1.05rem;
+    margin:0 0 6px 0;
+    color:var(--accent);
+}
+
+.endpoint p{
+    margin:4px 0 8px 0;
+    font-size:0.95rem;
+    color:var(--text);
+}
+
+pre{
+    background: rgba(255,255,255,0.05);
+    padding:12px;
+    border-radius:8px;
+    overflow-x:auto;
+    color:var(--text);
+    font-family: 'Fira Code', monospace;
+    font-size:0.88rem;
+    border:1px solid rgba(255,255,255,0.03);
+}
+
+code{
+    background: rgba(255,255,255,0.05);
+    padding:2px 6px;
+    border-radius:4px;
+    font-family: 'Fira Code', monospace;
+    font-size:0.9rem;
+    color:var(--accent-2);
+}
+
+footer.footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:0.875rem;
+    margin-top:30px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+    .container{
+        flex-direction:column;
+    }
+    nav.sidebar{
+        position:relative;
+        top:auto;
+        width:100%;
+        flex:unset;
+    }
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <nav class="sidebar">
+        <h2>Endpoints</h2>
+        <ul>
+            <li><a href="#health">GET /health</a></li>
+            <li><a href="#analyze">GET /analyze</a></li>
+        </ul>
+    </nav>
+    <main class="content">
+        <header class="header">
+            <h1 class="title">OpenWebSignals API</h1>
+            <span class="author">by h2gg</span>
+        </header>
+
+        <section id="overview" class="card">
+            <h2>Overview</h2>
+            <p>OpenWebSignals is a web API providing tools for DNS lookup, SSL information, and web analysis. Below are the available endpoints and their usage.</p>
+        </section>
+
+        <section id="health" class="card">
+            <h2>GET /health</h2>
+            <p>Check API health status.</p>
+            <div class="response"><strong>Response:</strong>
+            <pre>{ "status": "ok" }</pre></div>
+        </section>
+
+        <section id="analyze" class="card">
+            <h2>GET /analyze</h2>
+            <p>Analyze a website for signals and metrics.</p>
+            <div class="request"><strong>Request Body:</strong>
+            <pre>{ "url": "https://example.com" }</pre></div>
+            <div class="response"><strong>Response:</strong>
+            <pre>{ "analysis": { ... } }</pre></div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
